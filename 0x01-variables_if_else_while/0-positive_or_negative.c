@@ -33,6 +33,7 @@ int main(void)
 		printf("%d %s\n", n, positive);
 	else if (n == 0)
 		printf("%d %s\n", n, zero);
+	else
 		printf("%d %s\n", n, negative);
 	return (0);
 }
