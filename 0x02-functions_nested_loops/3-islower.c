@@ -1,12 +1,9 @@
 #include "main.h"
 
 /**
- * _islower - function to check if character is loser case
- *
- * @c : the parameter to be checked is loswer
- *
- *
- * Return : returns 1 if 'c' is lowercase otherwise always  0 (success)
+ * _islower - check for lower case letter
+ * @c : character to check the case
+ * Return:0 or 1
  */
 
 int _islower(int c)
