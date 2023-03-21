@@ -22,5 +22,5 @@ while (n > 98)
 }
 
 printf("98");
-_putchar('\n');
+putchar('\n');
 }
