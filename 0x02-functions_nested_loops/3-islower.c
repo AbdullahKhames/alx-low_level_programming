@@ -5,9 +5,10 @@
  *
  * @c : the parameter to be checked is loswer
  *
- * Description : 'new function to check alphabet'
+ * Description : new function to check alphabet case
  *
- * Return : returns 0 if lower case returns  1 if capital case
+ * Return : returns 1 if lower case returns  
+ 	    otherwise always  0 (success)
  */
 
 int _islower(int c)
