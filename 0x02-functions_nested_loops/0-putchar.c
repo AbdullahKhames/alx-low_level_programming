@@ -1,11 +1,12 @@
 #include "main.h"
 
+
 /**
- * main - entry point
- *
- * Description : a program that print putchar
- *
- * Return : Always 0 (succecful)
+ * main - Entry point
+ * 
+ * Description: 'the program's description'
+ * 
+ * Return: Always 0 (Success)
  */
 
 int main(void)
