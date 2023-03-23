@@ -11,7 +11,7 @@ void print_most_numbers(void)
 
 	for (i = 0 ; i < 10 ; i++)
 	{
-		if (i == 2+48 || i == 4+48)
+		if (i == 2 + 48 || i == 4 + 48)
 			continue;
 		_putchar(i+48);
 	}
