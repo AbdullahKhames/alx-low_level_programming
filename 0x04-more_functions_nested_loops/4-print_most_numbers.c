@@ -13,7 +13,7 @@ void print_most_numbers(void)
 	{
 		if (i == 2 + 48 || i == 4 + 48)
 			continue;
-		_putchar(i+48);
+		_putchar(i + 48);
 	}
 	_putchar('\n');
 }
