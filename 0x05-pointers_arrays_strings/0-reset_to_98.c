@@ -2,7 +2,7 @@
 
 /**
  * reset_to_98 - function that swaps integers
- * @*n: first argument to be swapped passed by reference
+ * @n: first argument to be swapped passed by reference
  * Description: function to swap int
  */
 
