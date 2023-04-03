@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- * _memset function that does memeset
+ * _memset - function that does memeset
  * @s: pointer to char
  * @b: normal char
- * @N: the number of times to print
+ * @n: the number of times to print
  * Return: returns pointer to char
  */
 
