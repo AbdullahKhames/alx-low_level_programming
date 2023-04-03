@@ -17,7 +17,7 @@ void print_diagsums(int *a, int size)
 	for (index1 = 0; index1 < size; index1++)
 	{
 		x += a[index1];
-		y += a[size - index1 -1];
+		y += a[size - index1 - 1];
 		a += size;
 	}
 	printf("%d, ", x);
