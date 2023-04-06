@@ -13,7 +13,7 @@ int check_number(int x, int y)
 	if (x * x > y)
 		return (-1);
 	else
-		return (check_numnber(x + 1, y));
+		return (check_number(x + 1, y));
 }
 
 /**
