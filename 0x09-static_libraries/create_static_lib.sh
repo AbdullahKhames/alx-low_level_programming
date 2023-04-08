@@ -1,3 +1,3 @@
 #! /bin/bash
-gcc -c *.c
+gcc -c $(ls *.c | grep -v "main.c")
 ar rc liball.a *.o
