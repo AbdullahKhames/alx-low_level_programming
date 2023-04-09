@@ -10,7 +10,7 @@
 
 int is_number(const char *n)
 {
-	int x ;
+	int x;
 	char *cptr;
 
 	x = strtol(n, &cptr, 10);
@@ -40,7 +40,7 @@ int main(int argc, char **argv)
 	}
 
 
-	for (i = 1;i < argc; i++)
+	for (i = 1; i < argc; i++)
 	{
 		if (!is_number(argv[i]))
 		{
@@ -50,8 +50,8 @@ int main(int argc, char **argv)
 		x = atoi(argv[i]);
 		sum += x;
 	}
-		
-	printf("%d\n",sum);
+
+	printf("%d\n", sum);
 	return (0);
 
 }
