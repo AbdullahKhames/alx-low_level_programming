@@ -1,6 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/**
+ * main  - prog
+ * @argc: arg
+ * @argv: arg
+ * Return: return 0
+ */
 int main(int argc, char *argv[])
 {
 
@@ -11,10 +17,9 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		return (1);
 	}
-	
 	x = atoi(argv[1]);
 	y = atoi(argv[2]);
-	printf("%d\n",(x * y));
+	printf("%d\n", (x * y));
 
-	return(0);
+	return (0);
 }
