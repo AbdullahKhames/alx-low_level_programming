@@ -23,6 +23,6 @@ char *_strdup(char *str)
 
 	for (i = 0;i< length; i++)
 		cptr[i] = str[i];
-	cptr[len] = '\0';
+	cptr[length] = '\0';
 	return (cptr);
 }
