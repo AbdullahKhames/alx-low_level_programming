@@ -17,11 +17,11 @@ char *_strdup(char *str)
 	while (str[length] != '\0')
 		length++;
 
-	cptr = (char*) malloc(length * sizeof(char) + 1);
+	cptr = (char *) malloc(length * sizeof(char) + 1);
 	if (cptr == NULL)
 		return (NULL);
 
-	for (i = 0;i< length; i++)
+	for (i = 0; i < length; i++)
 		cptr[i] = str[i];
 	cptr[length] = '\0';
 	return (cptr);
