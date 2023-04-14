@@ -10,7 +10,7 @@ void *malloc_checked(unsigned int b)
 {
 	int *iptr = malloc(b);
 
-	if (iptr ==)
+	if (iptr == 0)
 		exit(98);
 	return (iptr);
 }
