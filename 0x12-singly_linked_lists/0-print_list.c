@@ -6,10 +6,10 @@
  * @s: string
  * Return: int
  */
-int _strlen(char *s)
+unsigned int _strlen(const char *s)
 {
 	int i = 0;
-	int length = 0;
+	unsigned int length = 0;
 
 	if (!s)
 		return (0);
