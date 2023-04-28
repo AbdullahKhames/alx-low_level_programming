@@ -10,7 +10,7 @@ void free_list(list_t *head)
 
 	list_t *temp1 = head;
 	list_t *temp2;
-	
+
 	if (!head)
 		return;
 
