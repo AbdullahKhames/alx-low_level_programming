@@ -1,6 +1,11 @@
 #include "lists.h"
 
-/***/
+/**
+ * add_node_end - function to addd to linked list from back
+ * @head: pointer to pointer to list
+ * @str: string
+ * Return: retuns the new node
+ */
 
 list_t *add_node_end(list_t **head, const char *str)
 {
