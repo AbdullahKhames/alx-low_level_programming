@@ -11,7 +11,7 @@ int sum_listint(listint_t *head)
 	listint_t *current;
 	int sum = 0;
 
-	if(!head)
+	if (!head)
 		return (0);
 
 	current = head;
