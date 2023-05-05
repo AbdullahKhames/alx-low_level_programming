@@ -1,5 +1,9 @@
 #include "main.h"
 
+/**
+ * print_binary - prints binary
+ * @n: number
+ */
 void print_binary(unsigned long int n)
 {
 	int size = sizeof(n) * 8;
@@ -7,7 +11,7 @@ void print_binary(unsigned long int n)
 
 	while (size)
 	{
-		if (n &1l << --size)
+		if (n & 1l << --size)
 		{
 			_putchar('1');
 			counter++;

@@ -24,21 +24,30 @@ unsigned int powr(unsigned int num, int x)
 	return (temp);
 }
 
+/**
+ * _strlen - function
+ * @str: string
+ * Return: length of str
+ */
 int _strlen(const char *str)
 {
-    int length = 0;
+	int length = 0;
 
-    if (!(*str))
-        return (0);
+	if (!(*str))
+		return (0);
 
-    while (*str != '\0')
-    {
-        length++;
-        str++;
-    }
-    return (length);
+	while (*str != '\0')
+	{
+	length++;
+	str++;
+	}
+	return (length);
 }
-/***/
+/**
+ * binary_to_uint - funstion
+ * @b: str
+ * Return: number
+ */
 unsigned int binary_to_uint(const char *b)
 {
 	unsigned int number = 0;
@@ -50,7 +59,7 @@ unsigned int binary_to_uint(const char *b)
 		return (0);
 
 	x = _strlen(b);
-	for (i = x-1; i > 0; i--, n++)
+	for (i = x - 1; i > 0; i--, n++)
 	{
 		if (b[i] != '0' && b[i] != '1')
 			return (0);
@@ -61,4 +70,4 @@ unsigned int binary_to_uint(const char *b)
 
 	}
 	return (number);
-} 	
+}
