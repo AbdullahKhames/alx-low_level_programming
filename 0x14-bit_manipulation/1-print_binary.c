@@ -9,7 +9,7 @@ void print_binary(unsigned long int n)
 	{
 		if (n &1l << --size)
 		{
-			_putchar('1);
+			_putchar('1');
 			counter++;
 		}
 		else if (counter)
