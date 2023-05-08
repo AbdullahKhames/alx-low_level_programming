@@ -10,7 +10,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 {
 	ssize_t counter = 0;
 	ssize_t fp;
-	ssize_t red;
+	int r;
 	char *buffer;
 
 	if (!filename)
@@ -29,10 +29,11 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (!buffer)
 		return (0);
 
-	red = read(fp, buffer, letters);
+	r = read(fp, buffer, letters);
+	if (r == -1)
+		return (0);
 
-
-
+	counter = write(STDOUT_FILENO, buffer, r);
 	free(buffer);
 	close(fp);
 
