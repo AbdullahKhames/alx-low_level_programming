@@ -11,8 +11,9 @@
 int append_text_to_file(const char *filename, char *text_content)
 {
 	int counter = 0;
-	FILE *fp;
+	int fp;
 	int writen;
+
 
 	if (!filename)
 		return (-1);
@@ -23,11 +24,13 @@ int append_text_to_file(const char *filename, char *text_content)
 			counter++;
 	}
 
-	fp = fopen(filename, "a+");
-	if (!fp)
+	fp = open(filename, O_WRONLY | O_APPEND);
+	if (fp == -1)
 		return (-1);
 
-	fprintf(fp, text_content);
-	fclose(fp);
+	writen = write(fp, text_content, counter);
+	if (writen == -1)
+		return (-1);
+	close(fp);
 	return (1);
 }
