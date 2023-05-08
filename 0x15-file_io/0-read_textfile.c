@@ -9,8 +9,8 @@
 ssize_t read_textfile(const char *filename, size_t letters)
 {
 	ssize_t counter = 0;
-	FILE *fp;
-	char *str;
+	ssize_t fp;
+	ssize_t red;
 	char *buffer;
 
 	if (!filename)
@@ -19,22 +19,23 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (letters <= 0)
 	       return (0);
 	
-	fp = fopen(filename, "r");
+	fp = open(filename, O_RDONLY);
 
-	if (!fp)
+	if (fp == -1)
 		return (0);
 
-	buffer = fgets(str, letters, fp);
+	buffer = malloc(sizeof(char) * letters);
 
 	if (!buffer)
 		return (0);
 
-	while (buffer)
-	{
-		_putchar(*buffer);
-		counter++;
-		buffer++;
-	}
-	return counter;
+	red = read(fp, buffer, letters);
+
+	counter = write(STDOUT_FILENO, buffer, red);
+
+	free(buffer);
+	close(fp);
+
+	return (counter);
 
 }
