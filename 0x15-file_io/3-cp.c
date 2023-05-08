@@ -50,7 +50,7 @@ void buff_reader(int value, char *file, int fp_from, int fp_to)
 
 }
 /**
- * argc_checker - checks for correct args sent
+ * argc_Checker - checks for correct args sent
  * @argc: argc
  */
 void argc_Checker(int argc)
@@ -79,7 +79,7 @@ void file_closer(int value, int fp)
 
 
 /**
- * main -mian
+ * main - mian
  * @argc: argc
  * @argv: argv
  * Return: 1
