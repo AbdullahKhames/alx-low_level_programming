@@ -1,7 +1,7 @@
 #include "lists.h"
 /**
  * free_dlistint - frees
- * @:headLget freed
+ * @head:headLget freed
  */
 void free_dlistint(dlistint_t *head)
 {
@@ -12,7 +12,7 @@ void free_dlistint(dlistint_t *head)
 	while (head)
 	{
 		current = head;
-		head = current ->next;
+		head = current->next;
 		free(current);
 	}
 }

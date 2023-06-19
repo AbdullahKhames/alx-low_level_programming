@@ -3,16 +3,13 @@
 int sum_dlistint(dlistint_t *head)
 {
 	int sum = 0;
-	dlistint_t *current;
 
 	if (!head)
 		return (0);
-
-	current = head;
-	while (current->next)
+	while (head)
 	{
-		sum += current->n;
-		current = current->next;
+		sum += head->n;
+		head = head->next;
 	}
 	return (sum);
 }
