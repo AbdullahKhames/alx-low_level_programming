@@ -17,19 +17,25 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	char *val = NULL;
 	char *k = NULL;
 
-	val = _strcpy(value, val);
-	k = _strcpy(key, k);
+
 	
 	if (!key || strcmp(key, "") == 0 || !ht || !ht->array)
 	{
 		return(0);
 	}
+	val = _strcpy(value, val);
+	k = _strcpy(key, k);
 	idx = key_index((const unsigned char *)key, 1024);
 	if(ht->array[idx] == NULL)
 	{
 		
 		printf("in if\n");
 		ht->array[idx] = malloc(sizeof(hash_node_t));
+		if (!ht->array[idx])
+		{
+			return (0);
+		}
+		
 		ht->array[idx]->key = k;
 		ht->array[idx]->value = val;
 		ht->array[idx]->next = NULL;
