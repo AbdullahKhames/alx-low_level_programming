@@ -6,19 +6,18 @@
 */
 hash_table_t *hash_table_create(unsigned long int size)
 {
-    hash_table_t *hashTable;
-    
-    if (size <= 0)
-    {
-        return NULL;
-    }
+	hash_table_t *hashTable;
 
-    hashTable = malloc(sizeof(hash_table_t) * size);
-    if (!hashTable)
-    {
-        perror("error allocating space for hash table");
-        return NULL;
-    }
+	if (size <= 0)
+	{
+		return (NULL);
+	}
 
-    return hashTable;
+	hashTable = malloc(sizeof(hash_table_t) * size);
+	if (!hashTable)
+	{
+		perror("error allocating space for hash table");
+		return (NULL);
+	}
+	return (hashTable);
 }
