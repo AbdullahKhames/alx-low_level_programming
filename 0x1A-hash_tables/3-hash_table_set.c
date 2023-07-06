@@ -86,3 +86,36 @@ int _strlen(const char *src)
 	}
 	return (x);
 }
+int link_length(hash_node_t *node)
+{
+        int len = 0;
+        hash_node_t *current;
+
+        current = node;
+        while (current)
+        {
+                current = current->next;
+                len++;
+        }
+        return (len);
+}
+hash_node_t *link_add(hash_node_t *node, char *key, char *value)
+{
+        hash_node_t *toAdd;
+
+        if (!node)
+        {
+                return (NULL);
+        }
+        toAdd = malloc(sizeof(hash_node_t));
+        if (!toAdd)
+        {
+                perror("error");
+                return(NULL);
+        }
+        toAdd->key = key;
+        toAdd->value = value;
+        toAdd->next = node;
+        return (toAdd);
+}
+       
