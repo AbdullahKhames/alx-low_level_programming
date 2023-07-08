@@ -32,7 +32,7 @@ char *link_index(hash_node_t *node, unsigned long int index)
 	{
 		return (NULL);
 	}
-	current = node;
+	current = node;	
 	while (current)
 	{
 		idx = hash_djb2((const unsigned char *)current->key);

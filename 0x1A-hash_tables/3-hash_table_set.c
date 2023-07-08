@@ -13,7 +13,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	unsigned long int idx;
 	char *val = NULL;
 	char *k = NULL;
-
+	int key_idx;
 
 
 	if (!key || strcmp(key, "") == 0 || !ht || !ht->array)
@@ -26,7 +26,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	idx = key_index((const unsigned char *)key, ht->size);
 	if (ht->array[idx] == NULL)
 	{
-		ht->array[idx] = malloc(sizeof(hash_node_t *));
+		ht->array[idx] = malloc(sizeof(hash_node_t));
 		if (!ht->array[idx])
 		{
 			return (0);
@@ -38,7 +38,18 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (1);
 	}
 	else
-		ht->array[idx] = link_add(ht->array[idx], (char *)key, (char *)value);
+	{
+		key_idx = key_in_list(ht->array[idx], k);
+		if (key_idx == 0)
+		{
+			ht->array[idx] = link_add(ht->array[idx], (char *)key, (char *)value);
+		}
+		else
+		{
+			replace_value_at_idx(ht->array[idx], val, key_idx);
+		}
+		
+	}
 	return (1);
 }
 
@@ -122,14 +133,73 @@ hash_node_t *link_add(hash_node_t *node, char *key, char *value)
 	{
 		return (NULL);
 	}
-	toAdd = malloc(sizeof(hash_node_t *));
+	toAdd = malloc(sizeof(hash_node_t));
 	if (!toAdd)
 	{
 		perror("error");
 		return (NULL);
 	}
-	toAdd->key = key;
-	toAdd->value = value;
-	toAdd->next = node;
+/*/	if (strcmp(node->key, key) == 0)
+	{
+		toAdd->key = key;
+		toAdd->value = value;
+		toAdd->next = NULL;
+	}*/
+	else
+	{
+		toAdd->key = key;
+		toAdd->value = value;
+		toAdd->next = node;
+	}
 	return (toAdd);
+}
+
+int key_in_list(hash_node_t *head, char *key)
+{
+	int i = 0;
+	hash_node_t *current;
+	if(!head){
+		return (0);
+	}
+
+	current = head;
+
+	while (current)
+	{
+		if (strcmp(current->key, key) == 0)
+		{
+			return i;
+		}
+		i++;
+		current = current->next;
+	}
+	
+	return (0);
+}
+
+void replace_value_at_idx(hash_node_t *head, char *value, int idx)
+{
+	hash_node_t *current;
+
+	int counter = 0;
+
+	if (!head || !value)
+	{
+		return;
+	}
+
+	current = head;
+
+	while (current)
+	{
+		if (counter == idx)
+		{
+			free(current->value);
+			current->value = value;
+			return;
+		}
+		counter++;
+		current = current->next;
+	}
+	
 }

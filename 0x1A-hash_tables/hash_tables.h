@@ -45,4 +45,8 @@ hash_node_t *link_add(hash_node_t *node, char *key, char *value);
 int _strlen(const char *src);
 char * _strcpy(const char *src,  char *dest);
 void _hash_table_print(const hash_table_t *ht);
+void del_list(hash_node_t *node);
+void del_node(hash_node_t *node);
+int key_in_list(hash_node_t *head, char *key);
+void replace_value_at_idx(hash_node_t *head, char *value, int idx);
 #endif
