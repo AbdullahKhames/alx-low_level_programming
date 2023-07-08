@@ -25,8 +25,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	idx = key_index((const unsigned char *)key, 1024);
 	if (ht->array[idx] == NULL)
 	{
-
-		printf("in if\n");
 		ht->array[idx] = malloc(sizeof(hash_node_t *));
 		if (!ht->array[idx])
 		{
