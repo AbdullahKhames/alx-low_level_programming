@@ -30,7 +30,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	{
 		
 		printf("in if\n");
-		ht->array[idx] = malloc(sizeof(hash_node_t));
+		ht->array[idx] = malloc(sizeof(hash_node_t *));
 		if (!ht->array[idx])
 		{
 			return (0);
@@ -41,7 +41,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		ht->array[idx]->next = NULL;
 		return (1);
 	}
-	ht->array[idx] = link_add(ht->array[idx], k, val);
+	else
+		ht->array[idx] = link_add(ht->array[idx], k, val);
 	return (1);
 	
 }
@@ -63,7 +64,7 @@ char *_strcpy(const char *src, char *dest)
 	}
 	
 	l1 = _strlen(src);
-	dest = malloc(sizeof(char) * l1);
+	dest = malloc(sizeof(char) * (l1+1));
 	if(!dest)
 	{
 		perror("cannot allocate memory");
@@ -74,6 +75,7 @@ char *_strcpy(const char *src, char *dest)
 	{
 		dest[idx] = src[idx];
 	}
+	dest[idx] = '\0';
 	return (dest);
 }
 
@@ -113,7 +115,7 @@ hash_node_t *link_add(hash_node_t *node, char *key, char *value)
         {
                 return (NULL);
         }
-        toAdd = malloc(sizeof(hash_node_t));
+        toAdd = malloc(sizeof(hash_node_t *));
         if (!toAdd)
         {
                 perror("error");
