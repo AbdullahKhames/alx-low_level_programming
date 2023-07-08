@@ -12,6 +12,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int idx;
 	char *val = NULL;
+	char *k = NULL;
 
 
 
@@ -21,6 +22,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	}
 
 	val = _strcpy(value, val);
+	k = _strcpy(key, k);
 	idx = key_index((const unsigned char *)key, ht->size);
 	if (ht->array[idx] == NULL)
 	{
@@ -30,7 +32,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 			return (0);
 		}
 
-		ht->array[idx]->key = (char *) key;
+		ht->array[idx]->key = k;
 		ht->array[idx]->value = val;
 		ht->array[idx]->next = NULL;
 		return (1);
@@ -81,10 +83,9 @@ int _strlen(const char *src)
 {
 	int x = 0;
 
-	while (*src != '\0')
+	while (src[x] != '\0')
 	{
 		x++;
-		src++;
 	}
 	return (x);
 }
