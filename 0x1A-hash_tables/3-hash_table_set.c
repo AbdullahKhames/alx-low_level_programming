@@ -43,12 +43,10 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		if (key_idx == 0)
 		{
 			ht->array[idx] = link_add(ht->array[idx], (char *)key, (char *)value);
-		}else if (key_idx == 2)
+		} else if (key_idx == 2)
 		{
 			return (0);
 		}
-		
-
 	}
 	return (1);
 }
@@ -56,7 +54,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 /**
  * _strdup - function to copy str
  * @src: src
- * @dest: dest
  * Return: number of char copied
  */
 char *_strdup(const char *src)
@@ -64,6 +61,7 @@ char *_strdup(const char *src)
 	int l1;
 	int idx = 0;
 	char *dest;
+
 	if (!src)
 	{
 		return (NULL);
@@ -130,12 +128,13 @@ hash_node_t *link_add(hash_node_t *node, char *key, char *value)
 	return (toAdd);
 }
 /**
- * key_in_list - function to check if key persent in list or not
+ * update_if_key_in_list - function to check if key persent in list or not
  * @head: head
  * @key: key
+ * @value: val
  * Return: item order if present
 */
-int update_if_key_in_list(hash_node_t *head, char *key, char * value)
+int update_if_key_in_list(hash_node_t *head, char *key, char *value)
 {
 	hash_node_t *current;
 
@@ -157,7 +156,7 @@ int update_if_key_in_list(hash_node_t *head, char *key, char * value)
 				perror("error allocating memory");
 				return (2);
 			}
-			
+
 			return (1);
 		}
 		current = current->next;
