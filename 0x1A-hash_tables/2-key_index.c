@@ -1,4 +1,5 @@
 #include "hash_tables.h"
+#include <string.h>
 /**
  * key_index - fnction return index of  a key
  * @key: key
@@ -44,4 +45,53 @@ char *link_index(hash_node_t *node, unsigned long int index)
 		current = current->next;
 	}
 	return (NULL);
+}
+int key_in_list(hash_node_t *head, char *key)
+{
+	int i = 0;
+	hash_node_t *current;
+	if(!head){
+		return (0);
+	}
+
+	current = head;
+
+	while (current)
+	{
+		if (strcmp(current->key, key) == 0)
+		{
+			return i + 1;
+		}
+		i++;
+		current = current->next;
+	}
+	
+	return (0);
+}
+
+void replace_value_at_idx(hash_node_t *head, char *value, int idx)
+{
+	hash_node_t *current;
+
+	int counter = 0;
+
+	if (!head || !value)
+	{
+		return;
+	}
+
+	current = head;
+	idx -= 1;
+	while (current)
+	{
+		if (counter == idx)
+		{
+			free(current->value);
+			current->value = value;
+			return;
+		}
+		counter++;
+		current = current->next;
+	}
+	
 }

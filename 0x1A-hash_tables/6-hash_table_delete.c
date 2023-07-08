@@ -30,7 +30,6 @@ void del_list(hash_node_t *node)
 {
 	hash_node_t *current;
 	hash_node_t *next;
-	hash_node_t *toFree;
 
 
 	if (!node)
@@ -40,20 +39,11 @@ void del_list(hash_node_t *node)
 	current = node;
 	while (current)
 	{
-		next = current->next;
-		if (!next)
-		{
+			next = current->next;
 			del_node(current);
 			free(current);
-		}
-		else
-		{
-			toFree = current;
-			current = current->next;
-			next = current->next;
-			del_node(toFree);
-			free(toFree);
-		}
+			current = next;
+		
 	}
 
 
@@ -65,7 +55,14 @@ void del_node(hash_node_t *node)
 	{
 		return;
 	}
-	node->next = NULL;
-	free(node->key);
-	free(node->value);
+	if (node->key)
+	{
+		free(node->key);
+	}
+	
+	if (node->value)
+	{
+		free(node->value);
+	}
+	
 }
