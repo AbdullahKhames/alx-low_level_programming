@@ -44,4 +44,5 @@ char *link_index(hash_node_t *node, unsigned long int index);
 hash_node_t *link_add(hash_node_t *node, char *key, char *value);
 int _strlen(const char *src);
 char * _strcpy(const char *src,  char *dest);
+void _hash_table_print(const hash_table_t *ht);
 #endif

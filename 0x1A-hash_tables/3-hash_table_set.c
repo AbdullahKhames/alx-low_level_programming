@@ -20,8 +20,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	{
 		return (0);
 	}
-	val = _strcpy(value, val);
-	k = _strcpy(key, k);
+
 	idx = key_index((const unsigned char *)key, 1024);
 	if (ht->array[idx] == NULL)
 	{
@@ -31,13 +30,13 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 			return (0);
 		}
 
-		ht->array[idx]->key = k;
-		ht->array[idx]->value = val;
+		ht->array[idx]->key = (char *) key;
+		ht->array[idx]->value = (char *) value;
 		ht->array[idx]->next = NULL;
 		return (1);
 	}
 	else
-		ht->array[idx] = link_add(ht->array[idx], k, val);
+		ht->array[idx] = link_add(ht->array[idx], (char *)key, (char *)value);
 	return (1);
 }
 
