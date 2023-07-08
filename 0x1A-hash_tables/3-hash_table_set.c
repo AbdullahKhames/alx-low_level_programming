@@ -20,7 +20,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	{
 		return (0);
 	}
-
 	val = _strcpy(value, val);
 	k = _strcpy(key, k);
 	idx = key_index((const unsigned char *)key, ht->size);
@@ -48,7 +47,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		{
 			replace_value_at_idx(ht->array[idx], val, key_idx);
 		}
-		
 	}
 	return (1);
 }
@@ -139,12 +137,6 @@ hash_node_t *link_add(hash_node_t *node, char *key, char *value)
 		perror("error");
 		return (NULL);
 	}
-/*/	if (strcmp(node->key, key) == 0)
-	{
-		toAdd->key = key;
-		toAdd->value = value;
-		toAdd->next = NULL;
-	}*/
 	else
 	{
 		toAdd->key = key;

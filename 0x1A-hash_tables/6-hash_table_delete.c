@@ -2,14 +2,14 @@
 
 /**
  * hash_table_delete - delete the hash table
- * @ht: table to be deleted 
+ * @ht: table to be deleted
 */
 void hash_table_delete(hash_table_t *ht)
 {
 	unsigned long int i;
 	hash_node_t *node;
 
-	if(!ht)
+	if (!ht)
 	{
 		return;
 	}
@@ -20,7 +20,7 @@ void hash_table_delete(hash_table_t *ht)
 	}
 	free(ht->array);
 	free(ht);
-	
+
 }
 /**
  * del_list - function to delete list
@@ -31,7 +31,6 @@ void del_list(hash_node_t *node)
 	hash_node_t *current;
 	hash_node_t *next;
 
-
 	if (!node)
 	{
 		return;
@@ -39,16 +38,18 @@ void del_list(hash_node_t *node)
 	current = node;
 	while (current)
 	{
-			next = current->next;
-			del_node(current);
-			free(current);
-			current = next;
-		
+		next = current->next;
+		del_node(current);
+		free(current);
+		current = next;
 	}
 
 
 }
-	
+/**
+ * del_node - function to delete list
+ * @node: list to be deleted
+*/
 void del_node(hash_node_t *node)
 {
 	if (!node)
@@ -59,10 +60,10 @@ void del_node(hash_node_t *node)
 	{
 		free(node->key);
 	}
-	
+
 	if (node->value)
 	{
 		free(node->value);
 	}
-	
+
 }

@@ -33,7 +33,7 @@ char *link_index(hash_node_t *node, unsigned long int index)
 	{
 		return (NULL);
 	}
-	current = node;	
+	current = node;
 	while (current)
 	{
 		idx = hash_djb2((const unsigned char *)current->key);
@@ -46,11 +46,19 @@ char *link_index(hash_node_t *node, unsigned long int index)
 	}
 	return (NULL);
 }
+/**
+ * key_in_list - function to check if key persent in list or not
+ * @head: head
+ * @key: key
+ * Return: item order if present
+*/
 int key_in_list(hash_node_t *head, char *key)
 {
 	int i = 0;
 	hash_node_t *current;
-	if(!head){
+
+	if (!head)
+	{
 		return (0);
 	}
 
@@ -60,15 +68,20 @@ int key_in_list(hash_node_t *head, char *key)
 	{
 		if (strcmp(current->key, key) == 0)
 		{
-			return i + 1;
+			return (i + 1);
 		}
 		i++;
 		current = current->next;
 	}
-	
+
 	return (0);
 }
-
+/**
+ * replace_value_at_idx - function to check if key persent in list or not
+ * @head: head
+ * @value: key
+ * @idx: key
+*/
 void replace_value_at_idx(hash_node_t *head, char *value, int idx)
 {
 	hash_node_t *current;
@@ -93,5 +106,5 @@ void replace_value_at_idx(hash_node_t *head, char *value, int idx)
 		counter++;
 		current = current->next;
 	}
-	
+
 }
