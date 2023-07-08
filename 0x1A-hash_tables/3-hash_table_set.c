@@ -11,57 +11,59 @@
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int idx;
-	char *val = NULL;
-	char *k = NULL;
+	char *val;
+	char *k;
 	int key_idx;
-
+	hash_node_t *node;
 
 	if (!key || strcmp(key, "") == 0 || !ht || !ht->array)
 	{
 		return (0);
 	}
-	val = _strcpy(value, val);
-	k = _strcpy(key, k);
+	val = _strdup(value);
+	k = _strdup(key);
 	idx = key_index((const unsigned char *)key, ht->size);
 	if (ht->array[idx] == NULL)
 	{
-		ht->array[idx] = malloc(sizeof(hash_node_t));
-		if (!ht->array[idx])
+		node = malloc(sizeof(hash_node_t));
+		if (!node)
 		{
 			return (0);
 		}
 
-		ht->array[idx]->key = k;
-		ht->array[idx]->value = val;
-		ht->array[idx]->next = NULL;
+		node->key = k;
+		node->value = val;
+		node->next = NULL;
+		ht->array[idx] = node;
 		return (1);
 	}
 	else
 	{
-		key_idx = key_in_list(ht->array[idx], k);
+		key_idx = update_if_key_in_list(ht->array[idx], k, val);
 		if (key_idx == 0)
 		{
 			ht->array[idx] = link_add(ht->array[idx], (char *)key, (char *)value);
-		}
-		else
+		}else if (key_idx == 2)
 		{
-			replace_value_at_idx(ht->array[idx], val, key_idx);
+			return (0);
 		}
+		
+
 	}
 	return (1);
 }
 
 /**
- * _strcpy - function to copy str
+ * _strdup - function to copy str
  * @src: src
  * @dest: dest
  * Return: number of char copied
  */
-char *_strcpy(const char *src, char *dest)
+char *_strdup(const char *src)
 {
 	int l1;
 	int idx = 0;
-
+	char *dest;
 	if (!src)
 	{
 		return (NULL);
@@ -99,24 +101,6 @@ int _strlen(const char *src)
 	return (x);
 }
 /**
- * link_length - function
- * @node: head
- * Return: int
-*/
-int link_length(hash_node_t *node)
-{
-	int len = 0;
-	hash_node_t *current;
-
-	current = node;
-	while (current)
-	{
-		current = current->next;
-		len++;
-	}
-	return (len);
-}
-/**
  * link_add - adds to the begining of  a linked list
  * @node: head
  * @key: key to be added
@@ -139,9 +123,45 @@ hash_node_t *link_add(hash_node_t *node, char *key, char *value)
 	}
 	else
 	{
-		toAdd->key = key;
-		toAdd->value = value;
+		toAdd->key = _strdup(key);
+		toAdd->value = _strdup(value);
 		toAdd->next = node;
 	}
 	return (toAdd);
+}
+/**
+ * key_in_list - function to check if key persent in list or not
+ * @head: head
+ * @key: key
+ * Return: item order if present
+*/
+int update_if_key_in_list(hash_node_t *head, char *key, char * value)
+{
+	hash_node_t *current;
+
+	if (!head)
+	{
+		return (0);
+	}
+
+	current = head;
+
+	while (current)
+	{
+		if (strcmp(current->key, key) == 0)
+		{
+			free(current->value);
+			current->value = _strdup(value);
+			if (!current->value)
+			{
+				perror("error allocating memory");
+				return (2);
+			}
+			
+			return (1);
+		}
+		current = current->next;
+	}
+
+	return (0);
 }

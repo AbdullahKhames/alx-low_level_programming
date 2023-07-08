@@ -8,7 +8,7 @@
 */
 char *hash_table_get(const hash_table_t *ht, const char *key)
 {
-	char *value = NULL;
+	char *value;
 	int idx;
 	hash_node_t *node;
 
@@ -29,7 +29,7 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 		{
 			if (strcmp(node->key, key) == 0)
 			{
-				value = _strcpy(node->value, value);
+				value = _strdup(node->value);
 				return (value);
 			}
 
@@ -38,5 +38,5 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 
 	}
 
-	return (value);
+	return (NULL);
 }
