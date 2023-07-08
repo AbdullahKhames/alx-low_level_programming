@@ -42,4 +42,6 @@ void hash_table_delete(hash_table_t *ht);
 int link_length(hash_node_t *node);
 char *link_index(hash_node_t *node, unsigned long int index);
 hash_node_t *link_add(hash_node_t *node, char *key, char *value);
+int _strlen(const char *src);
+char * _strcpy(const char *src,  char *dest);
 #endif

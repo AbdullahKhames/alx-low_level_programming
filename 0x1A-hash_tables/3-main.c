@@ -54,7 +54,7 @@ int main(void)
 	hash_node_t *a;
 	hash_node_t *b;
 	hash_node_t *c;
-	ht = hash_table_create(190);
+	ht = hash_table_create(1024);
 	// a = malloc(sizeof(hash_node_t));
 	// b = malloc(sizeof(hash_node_t));
 	// c = malloc(sizeof(hash_node_t));
@@ -71,11 +71,7 @@ int main(void)
 	// printf("%s\n", link_index(a, hash_djb2((const unsigned char *)b->key)));
 
 
-	hash_table_set(ht, "betty", "fourth");
-	hash_table_set(ht, "betty", "third");
-	hash_table_set(ht, "betty", "second");
-	hash_table_set(ht, "betty", "first");
-	hash_table_set(ht, "betty", "zeroth");
+	hash_table_set(ht, "C", "is fun");
 
 	print_ht(ht);
 	// ht->array[0] = malloc(sizeof(hash_node_t *));

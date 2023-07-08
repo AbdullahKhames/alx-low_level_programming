@@ -1,8 +1,5 @@
 #include "hash_tables.h"
 #include <string.h>
-int _strlen(const char *src);
-char * _strcpy(const char *src,  char *dest);
-
 /**
  * hash_table_set - function to add to table
  * @ht: table to add to
@@ -18,24 +15,24 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	char *k = NULL;
 
 
-	
+
 	if (!key || strcmp(key, "") == 0 || !ht || !ht->array)
 	{
-		return(0);
+		return (0);
 	}
 	val = _strcpy(value, val);
 	k = _strcpy(key, k);
 	idx = key_index((const unsigned char *)key, 1024);
-	if(ht->array[idx] == NULL)
+	if (ht->array[idx] == NULL)
 	{
-		
+
 		printf("in if\n");
 		ht->array[idx] = malloc(sizeof(hash_node_t *));
 		if (!ht->array[idx])
 		{
 			return (0);
 		}
-		
+
 		ht->array[idx]->key = k;
 		ht->array[idx]->value = val;
 		ht->array[idx]->next = NULL;
@@ -44,7 +41,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	else
 		ht->array[idx] = link_add(ht->array[idx], k, val);
 	return (1);
-	
 }
 
 /**
@@ -62,10 +58,10 @@ char *_strcpy(const char *src, char *dest)
 	{
 		return (NULL);
 	}
-	
+
 	l1 = _strlen(src);
-	dest = malloc(sizeof(char) * (l1+1));
-	if(!dest)
+	dest = malloc(sizeof(char) * (l1 + 1));
+	if (!dest)
 	{
 		perror("cannot allocate memory");
 		return (NULL);
@@ -88,42 +84,53 @@ int _strlen(const char *src)
 {
 	int x = 0;
 
-	while (*src++)
+	while (*src != '\0')
 	{
 		x++;
 	}
 	return (x);
 }
+/**
+ * link_length - function
+ * @node: head
+ * Return: int
+*/
 int link_length(hash_node_t *node)
 {
-        int len = 0;
-        hash_node_t *current;
+	int len = 0;
+	hash_node_t *current;
 
-        current = node;
-        while (current)
-        {
-                current = current->next;
-                len++;
-        }
-        return (len);
+	current = node;
+	while (current)
+	{
+		current = current->next;
+		len++;
+	}
+	return (len);
 }
+/**
+ * link_add - adds to the begining of  a linked list
+ * @node: head
+ * @key: key to be added
+ * @value: value to be added
+ * Return: returns hash node
+*/
 hash_node_t *link_add(hash_node_t *node, char *key, char *value)
 {
-        hash_node_t *toAdd;
+	hash_node_t *toAdd;
 
-        if (!node)
-        {
-                return (NULL);
-        }
-        toAdd = malloc(sizeof(hash_node_t *));
-        if (!toAdd)
-        {
-                perror("error");
-                return(NULL);
-        }
-        toAdd->key = key;
-        toAdd->value = value;
-        toAdd->next = node;
-        return (toAdd);
+	if (!node)
+	{
+		return (NULL);
+	}
+	toAdd = malloc(sizeof(hash_node_t *));
+	if (!toAdd)
+	{
+		perror("error");
+		return (NULL);
+	}
+	toAdd->key = key;
+	toAdd->value = value;
+	toAdd->next = node;
+	return (toAdd);
 }
-       
