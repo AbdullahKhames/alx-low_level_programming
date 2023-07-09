@@ -34,13 +34,11 @@ int main(void)
 {
     hash_table_t *ht;
 
-    int ret;
     char *key;
     char *value;
 
-    ht = hash_table_create(1024);
-    ret =  hash_table_set(ht, "C", "is fun");
-    printf("%d\n", ret);
+    ht = hash_table_create(30);
+    hash_table_set(ht, "C", "is fun");
     hash_table_set(ht, "python", "awesome");
     hash_table_set(ht, "Bob", "and Kris love asm");
     hash_table_set(ht, "N", "queens");
@@ -55,7 +53,6 @@ int main(void)
     hash_table_set(ht, "hetairas", "Bob Z");
     hash_table_set(ht, "mentioner", "Bob");
     hash_table_set(ht, "hetairas", "Bob Z Chu");
-    printf("%s\n",hash_table_get(ht, "Tim"));
     hash_table_print(ht);
     hash_table_delete(ht);
 
