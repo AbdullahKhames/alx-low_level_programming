@@ -1,18 +1,18 @@
 #include "lists.h"
-/**
- * free_dlistint - frees
- * @head:headLget freed
- */
+
 void free_dlistint(dlistint_t *head)
 {
-	dlistint_t *current;
-
-	if (!head)
-		return;
-	while (head)
-	{
-		current = head;
-		head = current->next;
-		free(current);
-	}
+    dlistint_t *current;
+    dlistint_t *previous;
+    if (!head)
+    {
+        return;
+    }
+    current = head;
+    while (current)
+    {
+        previous = current;
+        current =current->next;
+        free(previous);
+    }
 }
