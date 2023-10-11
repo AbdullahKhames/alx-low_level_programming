@@ -1,5 +1,4 @@
 #include "search_algos.h"
-
 /**
  * min - function to get minimn
  * @a: first arg
@@ -22,29 +21,29 @@ int min(int a, int b){
 */
 int jump_search(int *array, size_t size, int value)
 {
-    int prev = 0, step = sqrt(size);
+    int prev = 0, len = size, step = sqrt(len);
 
     if (!array)
     {
         return (-1);
     }
 
-    while (array[min(step, size) - 1] < value)
+    while (array[min(step, len) - 1] < value)
     {
-        printf("Value checked array[%d] = [%d]", prev, prev);
+        printf("Value checked array[%d] = [%d]\n", prev, prev);
         prev = step;
-        step += sqrt(size);
-        if (prev >= size)
+        step += sqrt(len);
+        if (prev >= len)
         {
             return (-1);
         }
         
     }
-    printf("Value found between indexes [%d] and [%d]", prev, step);    
-    while (prev < value)
+    printf("Value found between indexes [%d] and [%d]\n", prev, step);    
+    while (array[prev] < value)
     {
         prev++;
-        if (prev == min(step, size))
+        if (prev == min(step, len))
         {
             return (-1);
         }
